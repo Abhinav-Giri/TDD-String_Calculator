@@ -16,6 +16,7 @@ const App = () => {
     } catch (err) {
       setError(err instanceof Error ? err.message : 'An error occurred');
       setResult(null);
+      console.log('Error:', error)
     }
   };
   return (
