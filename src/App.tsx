@@ -1,11 +1,23 @@
 import { useState } from 'react';
+import { StringCalculator } from './stringCalculator';
 
 const App = () => {
   const [input, setInput] = useState('');
-  const [result] = useState(null);
-
-  const handleCalculate = () => {};
-
+  // const [result] = useState(null);
+ const [result, setResult] = useState<number | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const calculator = new StringCalculator();
+  
+  const handleCalculate = () => {
+ try {
+      setError(null);
+      const sum = calculator.add(input);
+      setResult(sum);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'An error occurred');
+      setResult(null);
+    }
+  };
   return (
     <div style={{ padding: '20px', backgroundColor: '#fff', color: '#aaa' }}>
       <img
