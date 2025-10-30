@@ -19,4 +19,7 @@ describe('StringCalculator', () => {
   it('should handle new lines between numbers', () => {
     expect(calculator.add('1\n2,3')).toBe(6);
   });
+  it('should support different delimiters', () => {
+    expect(calculator.add('//;\n1;2')).toBe(3);
+  });
 });
