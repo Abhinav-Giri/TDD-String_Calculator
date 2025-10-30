@@ -8,14 +8,17 @@ export class StringCalculator {
     if (numbers.startsWith('//')) {
       delimiter = numbers[2];
       numbersToProcess = numbers.substring(4);
-      return numbersToProcess
-        .split(delimiter)
-        .map(num => parseInt(num))
-        .reduce((sum, num) => sum + num, 0);
+        
+    }
+const nums = numbersToProcess
+      .split(new RegExp(`[${delimiter}\\n]`))
+      .map(num => parseInt(num));
+      
+   const negatives = nums.filter(n => n < 0);
+    if (negatives.length > 0) {
+      throw new Error(`Negatives not allowed: ${negatives.join(',')}`);
     }
 
-    return numbersToProcess.split(/[,\n]/)
-      .map(num => parseInt(num))
-      .reduce((sum, num) => sum + num, 0);
+    return nums.reduce((sum, num) => sum + num, 0);
   }
 }
