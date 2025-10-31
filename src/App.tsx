@@ -59,7 +59,7 @@ const App = () => {
       {result !== null && !Number.isNaN(result) ? <p style={{ color: 'green' }}>Result: {result}</p>
       :
 
-      <div role='alert'>
+      <div role="alert" aria-live="polite">
         <p>Make sure you enter numbers correctly!</p>
       </div> }
     </div>

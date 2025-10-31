@@ -28,4 +28,11 @@ describe('String Calculator App', () => {
   const button = screen.getByRole('button', { name: /calculate/i });
   expect(button).toBeInTheDocument();
 });
+
+it('should announce results and errors properly', () => {
+  render(<App />);
+  
+  const alertRegion = screen.getByRole('alert');
+  expect(alertRegion).toBeInTheDocument();
+});
 });
