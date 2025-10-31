@@ -28,18 +28,24 @@ const App = () => {
         alt="Calculator background"
       />
 
-      <h2>String Calculator</h2>
+      <h1>String Calculator</h1>
 
-      <h1 style={{ fontSize: '20px' }}>Enter numbers</h1>
+      <label htmlFor="numberInput" style={{ fontSize: '20px' }}>Enter numbers</label>
 
       <textarea
+        id="numberInput"
+        aria-describedby="inputHelp"
         style={{ margin: '10px 0', color: '#aaa' }}
         placeholder='Enter numbers'
         value={input}
         onChange={(e) => setInput(e.target.value)}
       />
-
+      <div id="inputHelp" className="sr-only">
+        Enter numbers separated by commas, or use custom delimiter with // prefix
+      </div>
       <div
+        aria-label="Calculate sum"
+        role="button"
         onClick={handleCalculate}
         style={{
           padding: '10px',

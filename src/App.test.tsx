@@ -18,4 +18,14 @@ describe('String Calculator App', () => {
     const imageAlt = screen.getByAltText('Calculator background')
     expect(imageAlt).toBeInTheDocument();
   });
+
+  it('should have properly labeled form controls', () => {
+  render(<App />);
+  const input = screen.getByLabelText(/enter numbers/i);
+  expect(input).toBeInTheDocument();
+  expect(input).toHaveAttribute('aria-describedby');
+  
+  const button = screen.getByRole('button', { name: /calculate/i });
+  expect(button).toBeInTheDocument();
+});
 });
